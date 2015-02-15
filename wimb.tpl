@@ -1,7 +1,8 @@
-%#template to generate a HTML table
-<head>
+<head
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
+<title>What's in my Bag</title>
 <h1>What's in My Bag:</h1>
 <table border="0">
 %for row in rows:

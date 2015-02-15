@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import sqlite3
-from bottle import route, run, debug, template, request, get, static_file
+from bottle import route, run, debug, template, request, static_file
 
 @route('/wimb')
 def wimb_list():
@@ -26,7 +26,7 @@ def new_item():
         conn.commit()
         c.close()
 
-        return '<p>The new item has been added, the ID is %s</p>' % new_id
+        return '<link rel="stylesheet" type="text/css" href="static/styles.css"> <p>The new item (ID %s) has been added.</p> <p><a href="/wimb">Back</a></p>' % new_id
     else:
         return template('add_item.tpl')
 
@@ -42,7 +42,7 @@ def edit_item(no):
         c.execute("UPDATE wimb SET description = ?, serial_no = ? WHERE id LIKE ?", (description, serial_no, no))
         conn.commit()
 
-        return '<p>The item number %s was successfully updated</p> <p><a href="/wimb">Back</a></p>' % no
+        return '<link rel="stylesheet" type="text/css" href="../static/styles.css"> <p>The item number %s was successfully updated</p> <p><a href="/wimb">Back</a></p>' % no
     else:
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
@@ -60,7 +60,7 @@ def delete_item(no):
         c.execute("DELETE FROM wimb WHERE id LIKE ?", (no))
         conn.commit()
 
-        return '<p>The item number %s has been deleted.</p> <p><a href="/wimb">Back</a>' % no
+        return '<link rel="stylesheet" type="text/css" href="../static/styles.css"> <p>The item number %s has been deleted.</p> <p><a href="/wimb">Back</a>' % no
     else:
         return template('delete_item', no=no)
 
