@@ -6,7 +6,7 @@ from bottle import route, run, debug, template, request, static_file
 def wimb_list():
     conn = sqlite3.connect('wimb.sqlite')
     c = conn.cursor()
-    c.execute("SELECT id,description, serial_no FROM wimb")
+    c.execute("SELECT id,item, serial_no FROM wimb")
     result = c.fetchall()
     c.close()
     output = template('wimb', rows=result)
@@ -20,7 +20,7 @@ def new_item():
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
 
-        c.execute("INSERT INTO wimb (description,serial_no) VALUES (?,?)", (item,serial_no))
+        c.execute("INSERT INTO wimb (item,serial_no) VALUES (?,?)", (item,serial_no))
         new_id = c.lastrowid
 
         conn.commit()
@@ -34,19 +34,19 @@ def new_item():
 def edit_item(no):
 
     if request.GET.get('save','').strip():
-        description = request.GET.get('description','').strip()
+        item = request.GET.get('item','').strip()
         serial_no = request.GET.get('serial_no','').strip()
 
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
-        c.execute("UPDATE wimb SET description = ?, serial_no = ? WHERE id LIKE ?", (description, serial_no, no))
+        c.execute("UPDATE wimb SET item = ?, serial_no = ? WHERE id LIKE ?", (item, serial_no, no))
         conn.commit()
 
         return '<link rel="stylesheet" type="text/css" href="../static/styles.css"> <p>The item number %s was successfully updated</p> <p><a href="/wimb">Back</a></p>' % no
     else:
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
-        c.execute("SELECT description,serial_no FROM wimb WHERE id LIKE ?", (str(no)))
+        c.execute("SELECT item,serial_no FROM wimb WHERE id LIKE ?", (str(no)))
         cur_data = c.fetchone()
 
         return template('edit_item', old=cur_data, no=no)
