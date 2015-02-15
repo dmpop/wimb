@@ -10,10 +10,12 @@
 <tr><th>ID</th><th>Item</th><th>Serial no.</th></tr>
 %for row in rows:
     %id = row[0]
+    %item = row[1]
+    %serial_no = row[2]
     <tr>
-    %for col in row:
-        <td>{{col}}</td>
-        %end
+    <td class="col1">{{id}}</td>
+    <td>{{item}}</td>
+    <td class="col3">{{serial_no}}</td>
     <td><a href="/edit/{{id}}">Edit</a></td>
     <td><a href="/delete/{{id}}">Delete</a></td>
   </tr>

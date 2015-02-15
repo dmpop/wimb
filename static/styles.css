@@ -1,20 +1,23 @@
 p {
-    font: 15px 'Open sans', sans-serif;
+    font: 15px 'Open Sans', sans-serif;
     }
 h1 {
     font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 3px;
 }
 table {
-    font: 15px 'Open sans', sans-serif;
+    font: 15px 'Open Sans', sans-serif;
     border-spacing: 5px;
     text-align: left;
     }
+td.col1 {
+    color: rgb(66, 184, 221);
+}
 #btn {
     width: 11em;  height: 2em;
     background: rgb(66, 184, 221);
     border-radius: 5px;
     color: #fff;
-    font-family: 'Open sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 25px;
     font-weight: 900;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
