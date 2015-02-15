@@ -12,7 +12,7 @@ def wimb_list():
     output = template('wimb', rows=result)
     return output
 
-@route('/new', method='GET')
+@route('/add', method='GET')
 def new_item():
     if request.GET.get('save','').strip():
         item = request.GET.get('item', '').strip()
@@ -26,9 +26,9 @@ def new_item():
         conn.commit()
         c.close()
 
-        return '<p>The new task was inserted into the database, the ID is %s</p>' % new_id
+        return '<p>The new item has been added, the ID is %s</p>' % new_id
     else:
-        return template('new_item.tpl')
+        return template('add_item.tpl')
 
 @route('/edit/:no', method='GET')
 def edit_item(no):
@@ -50,5 +50,18 @@ def edit_item(no):
         cur_data = c.fetchone()
 
         return template('edit_item', old=cur_data, no=no)
+
+@route('/delete/:no', method='GET')
+def delete_item(no):
+
+    if request.GET.get('delete','').strip():
+        conn = sqlite3.connect('wimb.sqlite')
+        c = conn.cursor()
+        c.execute("DELETE FROM wimb WHERE id LIKE ?", (no))
+        conn.commit()
+
+        return '<p>The item number %s has been deleted.</p>' % no
+    else:
+        return template('delete_item', no=no)
 
 run(host="0.0.0.0",port=8080, debug=True, reloader=True)
