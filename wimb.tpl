@@ -1,6 +1,8 @@
 %#template to generate a HTML table
-
-<p>What's in My Bag:</p>
+<head>
+<link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+<h1>What's in My Bag:</h1>
 <table border="0">
 %for row in rows:
     <tr>
@@ -10,3 +12,4 @@
   </tr>
 %end
 </table>
+<p><a href="add">Add Item</a></p>

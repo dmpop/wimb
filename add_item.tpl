@@ -1,6 +1,9 @@
-<p>Add a new item:</p>
+<head>
+<link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<h1>Add a new item:</h1>
 <form action="/add" method="GET">
-<input type="text" size="100" maxlength="100" name="item"><br />
-<input type="text" size="50" maxlength="100" name="serial_no"><br />
-<input type="submit" name="save" value="save">
+<p><input type="text" size="75" maxlength="254" name="item"></p>
+<p><input type="text" size="75" maxlength="100" name="serial_no"></p>
+<p><input type="submit" id="btn" name="save" value="Save"></p>
 </form>

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import sqlite3
-from bottle import route, run, debug, template, request
+from bottle import route, run, debug, template, request, get, static_file
 
 @route('/wimb')
 def wimb_list():
@@ -42,7 +42,7 @@ def edit_item(no):
         c.execute("UPDATE wimb SET description = ?, serial_no = ? WHERE id LIKE ?", (description, serial_no, no))
         conn.commit()
 
-        return '<p>The item number %s was successfully updated</p>' % no
+        return '<p>The item number %s was successfully updated</p> <p><a href="/wimb">Back</a></p>' % no
     else:
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
@@ -60,8 +60,12 @@ def delete_item(no):
         c.execute("DELETE FROM wimb WHERE id LIKE ?", (no))
         conn.commit()
 
-        return '<p>The item number %s has been deleted.</p>' % no
+        return '<p>The item number %s has been deleted.</p> <p><a href="/wimb">Back</a>' % no
     else:
         return template('delete_item', no=no)
+
+@route('/static/:path#.+#', name='static')
+def static(path):
+    return static_file(path, root='static')
 
 run(host="0.0.0.0",port=8080, debug=True, reloader=True)
