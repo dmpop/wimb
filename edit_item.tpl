@@ -4,7 +4,7 @@
 <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 </head>
-<title>What's in my Bag</title>
+<title>What's in My Bag</title>
 <h1>Edit item number {{no}}</h1>
 <form action="/edit/{{no}}" method="GET">
 <p><input type="text" name="item" value="{{old[0]}}" size="50" maxlength="254"></p>

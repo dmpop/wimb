@@ -4,7 +4,7 @@
 <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 </head>
-<title>What's in my Bag</title>
+<title>What's in My Bag</title>
 <h1>Delete item number {{no}}?</h1>
 <form action="/delete/{{no}}" method="GET">
 <input type="submit" id="btn" class="warning" name="delete" value="Delete">
