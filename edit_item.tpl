@@ -5,9 +5,9 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 </head>
 <title>What's in my Bag</title>
-<p>Edit the item number {{no}}</p>
+<h1>Edit item number {{no}}</h1>
 <form action="/edit/{{no}}" method="GET">
-<input type="text" name="description" value="{{old[0]}}" size="100" maxlength="100"><br />
-<input type="text" name="serial_no" value="{{old[1]}}" size="50" maxlength="100"><br />
-<input type="submit" name="save" value="Save">
+<p><input type="text" name="description" value="{{old[0]}}" size="75" maxlength="254"></p>
+<p><input type="text" name="serial_no" value="{{old[1]}}" size="50" maxlength="100"></p>
+<p><input type="submit" id="btn" name="save" value="Save"></p>
 </form>

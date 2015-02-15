@@ -6,6 +6,8 @@ h1 {
 }
 table {
     font: 15px 'Open sans', sans-serif;
+    border-spacing: 5px;
+    text-align: left;
     }
 #btn {
     width: 11em;  height: 2em;
