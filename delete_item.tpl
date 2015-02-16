@@ -5,7 +5,10 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 </head>
 <title>What's in My Bag</title>
+<div id="content">
 <h1>Delete item number {{no}}?</h1>
 <form action="/delete/{{no}}" method="GET">
 <input type="submit" id="btn" class="warning" name="delete" value="Delete">
 </form>
+<p><a href="/wimb">Back</a></p>
+</div>

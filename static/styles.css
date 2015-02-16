@@ -1,3 +1,7 @@
+#content {
+        margin: 0px auto;
+        text-align: center;
+        }
 p {
     font: 15px 'Open Sans', sans-serif;
     }
@@ -7,6 +11,7 @@ h1 {
 table {
     font: 15px 'Open Sans', sans-serif;
     border-spacing: 5px;
+    margin: 0px auto;
     text-align: left;
     }
 td.col1 {

@@ -5,6 +5,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
 </head>
 <title>What's in My Bag</title>
+<div id="content">
 <h1>What's in My Bag:</h1>
 <table border="0">
 <tr><th>ID</th><th>Item</th><th>Serial no.</th></tr>
@@ -22,3 +23,4 @@
 %end
 </table>
 <p><a href="add">Add Item</a></p>
+</div>
