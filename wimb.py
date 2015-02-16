@@ -1,16 +1,23 @@
 #!/usr/bin/python
-import sqlite3
-from bottle import route, run, debug, template, request, static_file
+import sqlite3, os
+from bottle import route, redirect, run, debug, template, request, static_file
 
 @route('/wimb')
 def wimb_list():
-    conn = sqlite3.connect('wimb.sqlite')
-    c = conn.cursor()
-    c.execute("SELECT id,item, serial_no FROM wimb")
-    result = c.fetchall()
-    c.close()
-    output = template('wimb', rows=result)
-    return output
+    if os.path.exists('wimb.sqlite'):
+        conn = sqlite3.connect('wimb.sqlite')
+        c = conn.cursor()
+        c.execute("SELECT id,item, serial_no FROM wimb")
+        result = c.fetchall()
+        c.close()
+        output = template('wimb', rows=result)
+        return output
+    else:
+        conn = sqlite3.connect('wimb.sqlite')
+        conn.execute("CREATE TABLE wimb (id INTEGER PRIMARY KEY, item char(254) NOT NULL, serial_no char(100))")
+        conn.execute("INSERT INTO wimb (item,serial_no) VALUES ('Nippon Kogaku K. K. Nikomat FTn','FT3855032')")
+        conn.commit()
+        return redirect('/wimb')
 
 @route('/add', method='GET')
 def new_item():
@@ -26,7 +33,7 @@ def new_item():
         conn.commit()
         c.close()
 
-        return '<link rel="stylesheet" type="text/css" href="static/styles.css"> <p>The new item (ID %s) has been added.</p> <p><a href="/wimb">Back</a></p>' % new_id
+        return redirect('/wimb')
     else:
         return template('add_item.tpl')
 
@@ -42,7 +49,7 @@ def edit_item(no):
         c.execute("UPDATE wimb SET item = ?, serial_no = ? WHERE id LIKE ?", (item, serial_no, no))
         conn.commit()
 
-        return '<link rel="stylesheet" type="text/css" href="../static/styles.css"> <p>The item number %s was successfully updated</p> <p><a href="/wimb">Back</a></p>' % no
+        return redirect('/wimb')
     else:
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
@@ -60,7 +67,7 @@ def delete_item(no):
         c.execute("DELETE FROM wimb WHERE id LIKE ?", (no))
         conn.commit()
 
-        return '<link rel="stylesheet" type="text/css" href="../static/styles.css"> <p>The item number %s has been deleted.</p> <p><a href="/wimb">Back</a>' % no
+        return redirect('/wimb')
     else:
         return template('delete_item', no=no)
 
