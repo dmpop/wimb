@@ -17,6 +17,9 @@ table {
 td.col1 {
     color: rgb(66, 184, 221);
 }
+td.col3 {
+    letter-spacing: 2px;
+}
 #btn {
     width: 11em;  height: 2em;
     background: rgb(66, 184, 221);
