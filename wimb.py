@@ -10,7 +10,7 @@ def wimb():
         c.execute("SELECT id,item, serial_no FROM wimb")
         result = c.fetchall()
         c.close()
-        output = template('wimb', rows=result)
+        output = template('wimb.tpl', rows=result)
         return output
     else:
         conn = sqlite3.connect('wimb.sqlite')
