@@ -7,6 +7,7 @@ p {
     }
 h1 {
     font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 3px;
+    color: #cc6600;
 }
 table {
     font: 15px 'Open Sans', sans-serif;
@@ -14,11 +15,16 @@ table {
     margin: 0px auto;
     text-align: left;
     }
+th{
+    font-weight: 400;
+    color: #660033;
+}
 td.col1 {
     color: rgb(66, 184, 221);
 }
 td.col3 {
     letter-spacing: 2px;
+    font-weight: 600;
 }
 #btn {
     width: 11em;  height: 2em;
