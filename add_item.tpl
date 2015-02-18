@@ -10,7 +10,7 @@
 <form action="/add" method="GET">
 <p><input type="text" size="50" maxlength="254" name="item"></p>
 <p><input type="text" size="50" maxlength="100" name="serial_no"></p>
-<p><input type="submit" id="btn" name="save" value="Save"></p>
+<p><input type="submit" id="btn" name="add" value="Add"></p>
 </form>
 <p><a href="/wimb">Back</a></p>
 </div>

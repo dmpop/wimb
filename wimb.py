@@ -21,7 +21,7 @@ def wimb():
 
 @route('/add', method='GET')
 def new_item():
-    if request.GET.get('save','').strip():
+    if request.GET.get('add','').strip():
         item = request.GET.get('item', '').strip()
         serial_no = request.GET.get('serial_no', '').strip()
         conn = sqlite3.connect('wimb.sqlite')
@@ -56,7 +56,7 @@ def edit_item(no):
         c.execute("SELECT item,serial_no FROM wimb WHERE id LIKE ?", (str(no)))
         cur_data = c.fetchone()
 
-        return template('edit_item', old=cur_data, no=no)
+        return template('edit_item.tpl', old=cur_data, no=no)
 
 @route('/delete/:no', method='GET')
 def delete_item(no):
@@ -69,7 +69,7 @@ def delete_item(no):
 
         return redirect('/wimb')
     else:
-        return template('delete_item', no=no)
+        return template('delete_item.tpl', no=no)
 
 @route('/static/:path#.+#', name='static')
 def static(path):
