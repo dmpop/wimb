@@ -21,15 +21,15 @@ def wimb():
     if os.path.exists('wimb.sqlite'):
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
-        c.execute("SELECT id,item, serial_no FROM wimb")
+        c.execute("SELECT id,item, serial_no, note FROM wimb")
         result = c.fetchall()
         c.close()
         output = template('wimb.tpl', rows=result)
         return output
     else:
         conn = sqlite3.connect('wimb.sqlite')
-        conn.execute("CREATE TABLE wimb (id INTEGER PRIMARY KEY, item char(254) NOT NULL, serial_no char(100))")
-        conn.execute("INSERT INTO wimb (item,serial_no) VALUES ('Nippon Kogaku K. K. Nikomat FTn','FT3855032')")
+        conn.execute("CREATE TABLE wimb (id INTEGER PRIMARY KEY, item char(254) NOT NULL, serial_no char(100), note char(254))")
+        conn.execute("INSERT INTO wimb (item,serial_no, note) VALUES ('Nippon Kogaku K. K. Nikomat FTn','FT3855032', 'ILFORD XP2 Super 400')")
         conn.commit()
         return redirect('/wimb')
 
@@ -38,10 +38,11 @@ def new_item():
     if request.GET.get('add','').strip():
         item = request.GET.get('item', '').strip()
         serial_no = request.GET.get('serial_no', '').strip()
+        note = request.GET.get('note', '').strip()
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
 
-        c.execute("INSERT INTO wimb (item,serial_no) VALUES (?,?)", (item,serial_no))
+        c.execute("INSERT INTO wimb (item,serial_no, note) VALUES (?,?,?)", (item,serial_no,note))
         new_id = c.lastrowid
 
         conn.commit()
@@ -57,17 +58,18 @@ def edit_item(no):
     if request.GET.get('save','').strip():
         item = request.GET.get('item','').strip()
         serial_no = request.GET.get('serial_no','').strip()
+        note = request.GET.get('note','').strip()
 
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
-        c.execute("UPDATE wimb SET item = ?, serial_no = ? WHERE id LIKE ?", (item, serial_no, no))
+        c.execute("UPDATE wimb SET item = ?, serial_no = ?, note = ? WHERE id LIKE ?", (item, serial_no, note, no))
         conn.commit()
 
         return redirect('/wimb')
     else:
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
-        c.execute("SELECT item,serial_no FROM wimb WHERE id LIKE ?", (str(no)))
+        c.execute("SELECT item,serial_no,note FROM wimb WHERE id LIKE ?", (no))
         cur_data = c.fetchone()
 
         return template('edit_item.tpl', old=cur_data, no=no)
