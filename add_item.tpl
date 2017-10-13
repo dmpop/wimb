@@ -5,7 +5,7 @@
 </head>
 <title>What's in My Bag</title>
 <div id="content">
-<h1>Add a New Entry</h1>
+<h1>Add New Entry</h1>
 <form action="/add" method="GET">
 <p>Item</p>
 <p><input type="text" size="50" maxlength="254" name="item"></p>
