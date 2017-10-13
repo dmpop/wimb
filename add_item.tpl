@@ -7,8 +7,11 @@
 <div id="content">
 <h1>Add a New Entry</h1>
 <form action="/add" method="GET">
+<p>Item</p>
 <p><input type="text" size="50" maxlength="254" name="item"></p>
+<p>Serial Number</p>
 <p><input type="text" size="50" maxlength="100" name="serial_no"></p>
+<p>Note</p>
 <p><input type="text" size="50" maxlength="254" name="note"></p>
 <p><input type="submit" id="btn" name="add" value="Add"></p>
 </form>
