@@ -12,5 +12,5 @@
 <p><input type="text" name="note" value="{{old[2]}}" size="50" maxlength="254"></p>
 <p><input type="submit" id="btn" name="save" value="Save"></p>
 </form>
-<p><a href="/wimb">Back</a></p>
+<p><a class="btn" href="/wimb">Back</a></p>
 </div>

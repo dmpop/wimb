@@ -22,6 +22,6 @@
   </tr>
 %end
 </table>
-<p><a href="add"><img src="static/svg/document.svg" height="24""></a></p>
+<p><a href="add"><img src="static/svg/document.svg" height="24"></a></p>
 <p><a href="https://github.com/dmpop/wimb">WIMB on GitHub</a></p>
 </div>

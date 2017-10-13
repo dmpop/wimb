@@ -15,5 +15,5 @@
 <p><input type="text" size="50" maxlength="254" name="note"></p>
 <p><input type="submit" id="btn" name="add" value="Add"></p>
 </form>
-<p><a href="/wimb">Back</a></p>
+<p><a class="btn" href="/wimb">Back</a></p>
 </div>

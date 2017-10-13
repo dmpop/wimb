@@ -9,5 +9,5 @@
 <form action="/delete/{{no}}" method="GET">
 <input type="submit" id="btn" class="warning" name="delete" value="Delete">
 </form>
-<p><a href="/wimb">Back</a></p>
+<p><a class="btn" href="/wimb">Back</a></p>
 </div>
