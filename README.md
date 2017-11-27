@@ -2,7 +2,7 @@
 
 A no-frills web app powered by the Python Bottle framework. As the name suggests, the app can help to keep tabs on the contents of your bag. It can be useful for photographers lugging around large amounts of photographic equipment, or anyone who has too much stuff is their bags.
 
-<img src="wimb.png" alt="wimb" width="50%">
+<center><img src="wimb.png" alt="wimb" width="50%"></center>
 
 ## Dependencies
 
