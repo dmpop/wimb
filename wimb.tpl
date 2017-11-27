@@ -17,11 +17,11 @@
     <td>{{item}}</td>
     <td class="col1">{{serial_no}}</td>
     <td class="col2">{{note}}</td>
-    <td><a href="/edit/{{id}}"><img src="static/svg/pencil.svg" height="16"></a></td>
+    <td><a href="/edit/{{id}}"><img src="static/svg/edit.svg" height="16"></a></td>
     <td><a href="/delete/{{id}}"><img src="static/svg/trash.svg" height="16"></a></td>
   </tr>
 %end
 </table>
-<p><a href="add"><img src="static/svg/document.svg" height="24"></a></p>
+<p><a href="add"><img src="static/svg/file-plus.svg" height="24"></a></p>
 <p><a href="https://github.com/dmpop/wimb">WIMB on GitHub</a></p>
 </div>
