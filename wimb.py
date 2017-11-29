@@ -16,7 +16,7 @@
 import sqlite3, os
 from bottle import route, redirect, run, debug, template, request, static_file
 
-@route('/wimb')
+@route('/')
 def wimb():
     if os.path.exists('wimb.sqlite'):
         conn = sqlite3.connect('wimb.sqlite')
