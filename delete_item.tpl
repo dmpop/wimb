@@ -7,6 +7,6 @@
 <div id="content">
 <h1>Delete This Entry?</h1>
 <form action="/delete/{{no}}" method="GET">
-<input type="submit" id="btn" class="warning" name="delete" value="DELETE"> <a class="btn" href="/wimb">BACK</a>
+<input type="submit" id="btn" class="warning" name="delete" value="DELETE"> <a class="btn" href="/">BACK</a>
 </form>
 </div>

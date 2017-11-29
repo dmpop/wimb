@@ -13,6 +13,6 @@
 <p><input type="text" size="50" maxlength="100" name="serial_no"></p>
 <p>Note</p>
 <p><input type="text" size="50" maxlength="254" name="note"></p>
-<p><input type="submit" id="btn" name="add" value="ADD"> <a class="btn" href="/wimb">BACK</a></p>
+<p><input type="submit" id="btn" name="add" value="ADD"> <a class="btn" href="/">BACK</a></p>
 </form>
 </div>

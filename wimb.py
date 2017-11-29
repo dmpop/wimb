@@ -31,7 +31,7 @@ def wimb():
         conn.execute("CREATE TABLE wimb (id INTEGER PRIMARY KEY, item char(254) NOT NULL, serial_no char(100), note char(254))")
         conn.execute("INSERT INTO wimb (item,serial_no, note) VALUES ('Nippon Kogaku K. K. Nikomat FTn','FT3855032', 'ILFORD XP2 Super 400')")
         conn.commit()
-        return redirect('/wimb')
+        return redirect('/')
 
 @route('/add', method='GET')
 def new_item():
@@ -48,7 +48,7 @@ def new_item():
         conn.commit()
         c.close()
 
-        return redirect('/wimb')
+        return redirect('/')
     else:
         return template('add_item.tpl')
 
@@ -65,7 +65,7 @@ def edit_item(no):
         c.execute("UPDATE wimb SET item = ?, serial_no = ?, note = ? WHERE id LIKE ?", (item, serial_no, note, no))
         conn.commit()
 
-        return redirect('/wimb')
+        return redirect('/')
     else:
         conn = sqlite3.connect('wimb.sqlite')
         c = conn.cursor()
@@ -83,7 +83,7 @@ def delete_item(no):
         c.execute("DELETE FROM wimb WHERE id LIKE ?", (no))
         conn.commit()
 
-        return redirect('/wimb')
+        return redirect('/')
     else:
         return template('delete_item.tpl', no=no)
 
