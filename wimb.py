@@ -20,6 +20,7 @@ from bottle import route, redirect, run, debug, template, request, static_file
 def wimb():
     if os.path.exists('wimb.sqlite'):
         conn = sqlite3.connect('wimb.sqlite')
+        conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
         c = conn.cursor()
         c.execute("SELECT id,item, serial_no, note FROM wimb")
         result = c.fetchall()
@@ -28,6 +29,7 @@ def wimb():
         return output
     else:
         conn = sqlite3.connect('wimb.sqlite')
+        conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
         conn.execute("CREATE TABLE wimb (id INTEGER PRIMARY KEY, item char(254) NOT NULL, serial_no char(100), note char(254))")
         conn.execute("INSERT INTO wimb (item,serial_no, note) VALUES ('Nippon Kogaku K. K. Nikomat FTn','FT3855032', 'ILFORD XP2 Super 400')")
         conn.commit()
@@ -40,6 +42,7 @@ def new_item():
         serial_no = request.GET.get('serial_no', '').strip()
         note = request.GET.get('note', '').strip()
         conn = sqlite3.connect('wimb.sqlite')
+        conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
         c = conn.cursor()
 
         c.execute("INSERT INTO wimb (item,serial_no, note) VALUES (?,?,?)", (item,serial_no,note))
@@ -61,6 +64,7 @@ def edit_item(no):
         note = request.GET.get('note','').strip()
 
         conn = sqlite3.connect('wimb.sqlite')
+        conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
         c = conn.cursor()
         c.execute("UPDATE wimb SET item = ?, serial_no = ?, note = ? WHERE id LIKE ?", (item, serial_no, note, no))
         conn.commit()
@@ -68,6 +72,7 @@ def edit_item(no):
         return redirect('/')
     else:
         conn = sqlite3.connect('wimb.sqlite')
+        conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
         c = conn.cursor()
         c.execute("SELECT item,serial_no,note FROM wimb WHERE id LIKE ?", (no))
         cur_data = c.fetchone()
@@ -79,6 +84,7 @@ def delete_item(no):
 
     if request.GET.get('delete','').strip():
         conn = sqlite3.connect('wimb.sqlite')
+        conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
         c = conn.cursor()
         c.execute("DELETE FROM wimb WHERE id LIKE ?", (no))
         conn.commit()
